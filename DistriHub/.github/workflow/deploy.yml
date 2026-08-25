@@ -63,6 +63,6 @@ jobs:
           username: mikash              # ✅ GrabWeb username
           password: Vikrant@123         # ✅ GrabWeb password
           protocol: ftp                 # or sftp depending on GrabWeb setup
-          local-dir: ./                 # ✅ Deploys from GitHub main branch root
+          local-dir: ./publish                # ✅ Deploys from GitHub main branch root
           server-dir: /httpdocs
           dangerous-clean-slate: true   # ✅ Wipes server dir before upload
