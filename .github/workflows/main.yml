@@ -62,7 +62,7 @@ jobs:
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
-          assword: ${{ secrets.FTP_PASSWORD }}
+          password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps   # or sftp depending on GrabWeb setup
           local-dir: ./publish/
           server-dir: /httpdocs/
