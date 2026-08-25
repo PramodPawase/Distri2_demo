@@ -51,10 +51,10 @@ jobs:
     environment: production
 
     steps:
-      - name: Download Artifact
-        uses: actions/download-artifact@v3
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
         with:
-          name: published-app
+          name: build-output
           path: ./publish
 
       - name: FTP Deploy to GrabWeb
