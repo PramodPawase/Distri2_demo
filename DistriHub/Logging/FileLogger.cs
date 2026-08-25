@@ -95,6 +95,7 @@ namespace DistriHub.Logging
     {
         public static ILoggingBuilder AddFileLogger(this ILoggingBuilder builder, Action<FileLoggerOptions>? configure = null)
         {
+            //this new
             var options = new FileLoggerOptions();
             configure?.Invoke(options);
             builder.AddProvider(new FileLoggerProvider(options));
