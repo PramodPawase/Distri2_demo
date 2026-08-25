@@ -60,7 +60,7 @@ jobs:
       - name: FTP Deploy to GrabWeb
         uses: SamKirkland/FTP-Deploy-Action@v4
         with:
-          server: ${{ secrets.GRABWEB_FTP_SERVER }}     # ✅ GrabWeb server
+          server: ${{ secrets.ftp.grabweb.com }}     # ✅ GrabWeb server
           username: ${{ secrets.Boravikrant@gmail.com }} # ✅ GrabWeb username
           password: ${{ secrets.Vikrant@123 }} # ✅ GrabWeb password
           protocol: ftps   # or sftp depending on GrabWeb setup
