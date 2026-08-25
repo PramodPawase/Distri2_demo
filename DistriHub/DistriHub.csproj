@@ -29,6 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include=".github\workflow\deploy.yml" />
     <None Include="wwwroot\assets\css\bootstrap.min.css" />
     <None Include="wwwroot\assets\css\fullcalendar.css" />
     <None Include="wwwroot\assets\css\lineicons.css" />
