@@ -67,7 +67,7 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@v4
         with:
           server: ftp.mikashi.in        # ✅ GrabWeb server
-          username: mikash              # ✅ GrabWeb username
+          username: mikashi              # ✅ GrabWeb username
           password: Vikrant@123         # ✅ GrabWeb password
           protocol: ftp                 # or sftp depending on GrabWeb setup
           local-dir: ./publish                # ✅ Deploys from GitHub main branch root
