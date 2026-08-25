@@ -40,9 +40,9 @@ jobs:
         run: dotnet publish -c Release -o ./publish
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
-          name: published-app   # ✅ Consistent name
+          name: published-app
           path: ./publish
 
   deploy:
@@ -51,18 +51,19 @@ jobs:
     environment: production
 
     steps:
-      - name: Download build artifacts
-        uses: actions/download-artifact@v4
+      - name: Download Artifact
+        uses: actions/download-artifact@v3
         with:
-          name: published-app   # ✅ Must match upload name
+          name: published-app
           path: ./publish
 
       - name: FTP Deploy to GrabWeb
-        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        uses: SamKirkland/FTP-Deploy-Action@v4
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
+          server: ftp.mikashi.in      # ✅ GrabWeb server
+          username: mikash # ✅ GrabWeb username
+          password: Vikrant@123 # ✅ GrabWeb password
           protocol: ftp   # or sftp depending on GrabWeb setup
-          local-dir: ./publish/
-          server-dir: /httpdocs/
+          local-dir: ./publish
+          server-dir: /httpdocs
+          dangerous-clean-slate: true
