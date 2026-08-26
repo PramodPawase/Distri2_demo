@@ -64,7 +64,7 @@ jobs:
           ref: main   # ✅ Ensures deployment uses main branch directly
 
       - name: FTP Deploy to GrabWeb
-        uses: SamKirkland/FTP-Deploy-Action@v4
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
         with:
           server: ftp.mikashi.in        # ✅ GrabWeb server
           username: mikashi              # ✅ GrabWeb username
