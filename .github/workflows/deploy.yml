@@ -45,31 +45,25 @@ jobs:
           name: published-app
           path: ./publish/
 
-      - name: Download Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: published-app
-          path: ./publish/
-    
-
   deploy:
     runs-on: windows-latest
     needs: build
     environment: production
 
     steps:
-      - name: Checkout Code (main branch)
-        uses: actions/checkout@v3
+      - name: Download Artifact
+        uses: actions/download-artifact@v4
         with:
-          ref: main   # ✅ Ensures deployment uses main branch directly
+          name: published-app
+          path: ./publish/
 
       - name: FTP Deploy to GrabWeb
         uses: SamKirkland/FTP-Deploy-Action@v4.4.0
         with:
           server: ftp.mikashi.in        # ✅ GrabWeb server
-          username: mikashi              # ✅ GrabWeb username
+          username: mikashi             # ✅ GrabWeb username
           password: Vikrant@123         # ✅ GrabWeb password
-          protocol: ftp                 # or sftp depending on GrabWeb setup
-          local-dir: ./publish/                # ✅ Deploys from GitHub main branch root
+          protocol: ftp                 # or ftps depending on your server
+          local-dir: ./publish/         # ✅ Deploys downloaded artifact
           server-dir: /httpdocs/
           dangerous-clean-slate: true   # ✅ Wipes server dir before upload
