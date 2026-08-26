@@ -66,4 +66,4 @@ jobs:
           protocol: ftp                 # or ftps depending on your server
           local-dir: ./publish/         # ✅ Deploys downloaded artifact
           server-dir: /httpdocs/
-          dangerous-clean-slate: true   # ✅ Wipes server dir before upload
+          dangerous-clean-slate: false   # ✅ Wipes server dir before upload
