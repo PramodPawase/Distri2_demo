@@ -62,7 +62,7 @@ jobs:
         with:
           server: ftp.mikashi.in        # ✅ GrabWeb server
           username: mikashi             # ✅ GrabWeb username
-          password: Vikrant@123         # ✅ GrabWeb password
+          password: vikrant@123         # ✅ GrabWeb password
           protocol: ftp                 # or ftps depending on your server
           local-dir: ./publish/         # ✅ Deploys downloaded artifact
           server-dir: /httpdocs/
