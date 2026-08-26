@@ -60,9 +60,9 @@ jobs:
       - name: FTP Deploy to GrabWeb
         uses: SamKirkland/FTP-Deploy-Action@v4.4.0
         with:
-          server: ftp.mikashi.in        # ✅ GrabWeb server
+          server: 180.179.212.43        # ✅ GrabWeb server
           username: mikashi             # ✅ GrabWeb username
-          password: Vikrant@123         # ✅ GrabWeb password
+          password: 7@5jwx73E         # ✅ GrabWeb password
           protocol: ftp                 # or ftps depending on your server
           local-dir: ./publish/         # ✅ Deploys downloaded artifact
           server-dir: /httpdocs/
