@@ -64,6 +64,6 @@ jobs:
           username: mikashi             # ✅ GrabWeb username
           password: 7@5jwx73E         # ✅ GrabWeb password
           protocol: ftp                 # or ftps depending on your server
-          local-dir: ./publish/         # ✅ Deploys downloaded artifact
+          local-dir: ./publish/wwwroot/         # ✅ Deploys downloaded artifact
           server-dir: /httpdocs/
           dangerous-clean-slate: false   # ✅ Wipes server dir before upload
