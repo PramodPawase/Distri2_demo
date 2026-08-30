@@ -18,6 +18,7 @@ namespace DistriHub.Repository
         Task<Models.Model?> GetModelByNameAsync(string name);
 
         Task<Models.ProductDetails?> GetProductBySerialNoAsync(string serialNo);
+        Task<IEnumerable<Models.ProductDetails>> GetProductDetailsAsync(string? serialFilter);
         Task<int> InsertProductDetailsAsync(Models.ProductDetails product);
         Task UpdateProductDetailsAsync(Models.ProductDetails product);
         Task UpdateProductDetailsDistributorsColsAsync(Models.ProductDetails product);

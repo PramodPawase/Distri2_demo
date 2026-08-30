@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="@Url.Content("~/assets/images/favicon.svg")" type="image/x-icon" />
-    <title>Archon Distributors </title>
+    <title>Mikashi </title>
 
     <!-- ========== All CSS files linkup ========= -->
     <link rel="stylesheet" href="@Url.Content("~/assets/css/bootstrap.min.css")" />
@@ -21,10 +21,11 @@
     <!-- ======== Preloader =========== -->
     <!-- ======== sidebar-nav start =========== -->
     <aside class="sidebar-nav-wrapper">
-        <div class="navbar-logo">
-            <a asp-controller="Home" asp-action="Index">
+        <div class="navbar-logo archon-text">
+            @* <a asp-controller="Home" asp-action="Index">
                 <img src="@Url.Content("~/assets/images/logo/logo.svg")" alt="logo" />
-            </a>
+            </a> *@
+            Mikashi
         </div>
         <nav class="sidebar-nav">
             <ul>
@@ -55,6 +56,9 @@
                         </li>
                          <li>
                             <a asp-controller="model" asp-action="create" class="active"> Model </a>
+                        </li>
+                        <li>
+                            <a asp-controller="SerialNoView" asp-action="index" class="active"> Search Serial No </a>
                         </li>
                     </ul>
                 </li>

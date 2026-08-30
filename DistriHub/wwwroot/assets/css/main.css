@@ -5938,6 +5938,15 @@ h6,
   border-radius: 50%;
   animation: spinner 0.9s linear infinite;
 }
+.archon-text {
+    font-family: Arial, Helvetica, sans-serif; /* clean sans-serif font */
+    font-weight: bold; /* bold style */
+    font-size: 18px; /* adjust size as needed */
+    color: #FFD700; /* bright yellow (gold) */
+    background-color: #FFFFFF; /* white background */
+    text-align: center; /* center the text */
+    padding: 20px; /* spacing around text */
+}
 
 @keyframes spinner {
   from {

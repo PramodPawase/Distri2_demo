@@ -90,6 +90,51 @@ namespace DistriHub.Repository
             return null;
         }
 
+        public async Task<IEnumerable<Models.ProductDetails>> GetProductDetailsAsync(string? serialFilter)
+        {
+            var list = new List<Models.ProductDetails>();
+            string sql;
+            if (string.IsNullOrWhiteSpace(serialFilter))
+            {
+                sql = "SELECT ProductId, CategoryId, SubCategoryId, ModelId, SerialNo, UploadDate, IsUsed, Finance, Distributor, FinanceDate, Dealer, Installation, InstallationDate, CreatedAt, UpdatedAt FROM [dbo].[ProductDetails] ORDER BY UploadDate DESC;";
+            }
+            else
+            {
+                sql = "SELECT ProductId, CategoryId, SubCategoryId, ModelId, SerialNo, UploadDate, IsUsed, Finance, Distributor, FinanceDate, Dealer, Installation, InstallationDate, CreatedAt, UpdatedAt FROM [dbo].[ProductDetails] WHERE LOWER(SerialNo) LIKE '%' + LOWER(@Serial) + '%' ORDER BY UploadDate DESC;";
+            }
+
+            await using var conn = new SqlConnection(_connectionString);
+            await using var cmd = new SqlCommand(sql, conn);
+            if (!string.IsNullOrWhiteSpace(serialFilter))
+                cmd.Parameters.Add("@Serial", SqlDbType.NVarChar, 100).Value = serialFilter.Trim();
+
+            await conn.OpenAsync();
+            await using var reader = await cmd.ExecuteReaderAsync();
+            while (await reader.ReadAsync())
+            {
+                list.Add(new Models.ProductDetails
+                {
+                    ProductId = reader.GetInt32(0),
+                    CategoryId = reader.GetInt32(1),
+                    SubCategoryId = reader.GetInt32(2),
+                    ModelId = reader.GetInt32(3),
+                    SerialNo = reader.IsDBNull(4) ? null : reader.GetString(4),
+                    UploadDate = reader.GetDateTime(5),
+                    IsUsed = reader.GetBoolean(6),
+                    Finance = reader.IsDBNull(7) ? null : reader.GetString(7),
+                    Distributor = reader.IsDBNull(8) ? null : reader.GetString(8),
+                    FinanceDate = reader.IsDBNull(9) ? (DateTime?)null : reader.GetDateTime(9),
+                    Dealer = reader.IsDBNull(10) ? null : reader.GetString(10),
+                    Installation = reader.IsDBNull(11) ? null : reader.GetString(11),
+                    InstallationDate = reader.IsDBNull(12) ? (DateTime?)null : reader.GetDateTime(12),
+                    CreatedAt = reader.GetDateTime(13),
+                    UpdatedAt = reader.IsDBNull(14) ? (DateTime?)null : reader.GetDateTime(14)
+                });
+            }
+
+            return list;
+        }
+
         // Serial number validation - returns status codes as described in controller spec
         // 0 = Valid Serial No (and marks IsUsed = true)
         // -1 = Invalid Serial Number

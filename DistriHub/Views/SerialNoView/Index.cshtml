@@ -1,0 +1,83 @@
+@model IEnumerable<DistriHub.Models.ProductDetails>
+@{
+    ViewData["Title"] = "Product Details";
+    var serial = (string?)ViewData["Serial"] ?? string.Empty;
+}
+
+<section class="tab-components">
+    <div class="container-fluid">
+        <div class="title-wrapper pt-30">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="title">
+                        <h2>Product Details</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-elements-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card-style mb-30">
+                        <form method="get" asp-controller="SerialNoView" asp-action="Index" class="row g-2 align-items-center">
+                            <div class="col-auto input-style-1" style="flex:0 0 360px;margin-bottom: 0px;">
+                                <label class="control-label">Search by Serial No</label>
+                                <input type="text" name="serial" value="@serial" placeholder="Enter serial number" class="form-control" />
+                            </div>
+                            <div class="col-auto" style="align-self:flex-end;">
+                                <button type="submit" class="main-btn primary-btn rounded-full btn-hover">Search</button>
+                                <a href="@Url.Action("Index", "SerialNoView")" class="main-btn secondary-btn rounded-full btn-hover" style="margin-left:0.5rem;">Clear</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card-style mb-30">
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead class="table-light">
+                                    <tr class="text-center">
+                                        <th scope="col">ProductId</th>
+                                        <th scope="col">SerialNo</th>
+                                        <th scope="col">ModelId</th>
+                                        <th scope="col">UploadDate</th>
+                                        <th scope="col">IsUsed</th>
+                                        <th scope="col">Distributor</th>
+                                        <th scope="col">Dealer</th>
+                                        <th scope="col">Installation</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model != null)
+                                    {
+                                        foreach (var p in Model)
+                                        {
+                                            <tr>
+                                                <td class="text-center">@p.ProductId</td>
+                                                <td>@p.SerialNo</td>
+                                                <td class="text-center">@p.ModelId</td>
+                                                <td class="text-center">@p.UploadDate.ToString("yyyy-MM-dd")</td>
+                                                <td class="text-center">@(p.IsUsed ? "Yes" : "No")</td>
+                                                <td>@p.Distributor</td>
+                                                <td>@p.Dealer</td>
+                                                <td>@p.Installation</td>
+                                            </tr>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <tr><td colspan="8" class="text-center">No records found.</td></tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
